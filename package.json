@@ -29,7 +29,7 @@
     "lint": "eslint src --fix",
     "prerelease": "npm run lint && npm run test && npm run build",
     "release": "npm publish . --access public",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "peerDependencies": {
     "react": "^16.4.1",
