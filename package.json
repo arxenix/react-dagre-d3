@@ -1,0 +1,42 @@
+{
+  "name": "react-dagred3",
+  "version": "0.0.1",
+  "description": "React wrapper around dagre-d3. dynamically generate and layout DAGs",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "keywords": [
+    "dagre",
+    "d3",
+    "dagre-d3",
+    "react",
+    "graph",
+    "layout"
+  ],
+  "author": "arxenix",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "dependencies": {
+    "d3": "^5.5.0",
+    "dagre-d3": "^0.6.1",
+    "prop-types": "^15.6.2",
+    "react-fast-compare": "^2.0.1"
+  },
+  "devDependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0"
+  }
+}
