@@ -2,12 +2,6 @@
   "name": "react-dagred3",
   "version": "0.0.1",
   "description": "React wrapper around dagre-d3. dynamically generate and layout DAGs",
-  "main": "build/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch",
-    "build": "webpack"
-  },
   "keywords": [
     "dagre",
     "d3",
@@ -16,8 +10,27 @@
     "graph",
     "layout"
   ],
-  "author": "arxenix",
+  "homepage": "https://github.com/arxenix/React-DagreD3",
+  "bugs": {
+    "url": "https://github.com/arxenix/React-DagreD3"
+  },
   "license": "MIT",
+  "author": "Ankur Sundara <me@ankursundara.com> (https://github.com/arxenix)",
+  "main": "build/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arxenix/React-DagreD3.git"
+  },
+  "scripts": {
+    "build": "webpack -p",
+    "build:dev": "webpack -d",
+    "build:doc": "documentation build src/* --shallow --config documentation.yml --github --format md --output DOCS.md",
+    "build:storybook": "build-storybook -c .storybook -o docs",
+    "lint": "eslint src --fix",
+    "prerelease": "npm run lint && npm run test && npm run build",
+    "release": "npm publish . --access public",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+  },
   "peerDependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
@@ -29,13 +42,21 @@
     "react-fast-compare": "^2.0.1"
   },
   "devDependencies": {
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "@storybook/addon-actions": "^4.0.0-alpha.14",
+    "@storybook/addon-info": "^4.0.0-alpha.14",
+    "@storybook/addon-knobs": "^4.0.0-alpha.14",
+    "@storybook/addon-options": "^4.0.0-alpha.14",
+    "@storybook/react": "^4.0.0-alpha.14",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "moment": "^2.22.2",
+    "node-sass": "^4.9.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "sass-loader": "^7.0.3",
     "webpack": "^4.16.2",
     "webpack-cli": "^3.1.0"
   }

@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
-import * as dagreD3 from "dagre-d3";
-import * as d3 from "d3";
+import * as dagreD3 from "dagre-d3"
+import * as d3 from "d3"
 
-import isEqual from 'react-fast-compare';
+import isEqual from 'react-fast-compare'
 
 class DagreD3 extends React.Component {
     constructor(props) {
