@@ -5,70 +5,10 @@ import {withInfo} from '@storybook/addon-info';
 import DagreD3 from '../src/DagreD3.jsx';
 import * as dagreD3 from 'dagre-d3';
 import * as d3 from 'd3';
+import {DynamicGraph1, DynamicGraph2}  from "./DynamicGraph.jsx";
+import graphs from './graphs.jsx';
 import './styles.scss';
 
-
-let graphs = {
-    simple: {
-        nodes: {
-            '1': {
-                label: 'Node 1'
-            },
-            '2': {
-                label: 'Node 2'
-            },
-            '3': {
-                label: 'Node 3'
-            },
-            '4': {
-                label: 'Node 4'
-            }
-        },
-        edges: [
-            ['1', '2', {}],
-            ['1', '3', {}],
-            ['2', '4', {}],
-            ['3', '4', {}]
-        ]
-    },
-    medium: {
-        nodes: {
-            '1': {}, '2': {}, '3': {}, '4': {}, '5': {},
-            '6': {},
-        },
-        edges: [
-            ['1', '2', {}],
-            ['1', '3', {}],
-            ['2', '4', {}],
-            ['3', '4', {}],
-            ['4', '5', {}],
-            ['1', '6', {}],
-            ['5', '6', {}]
-        ]
-    },
-    large: {
-        nodes: {
-            '1': {}, '2': {}, '3': {}, '4': {}, '5': {}, '6': {},
-            '7': {}, '8': {}, '9': {}, '10': {}, '11': {}, '12': {}
-        },
-        edges: [
-            ['1', '2', {}],
-            ['1', '5', {}],
-            ['2', '3', {}],
-            ['3', '4', {}],
-            ['5', '6', {}],
-            ['5', '7', {}],
-            ['5', '8', {}],
-            ['6', '9', {}],
-            ['7', '10', {}],
-            ['2', '9', {}],
-            ['2', '10', {}],
-            ['9', '11', {}],
-            ['10', '11', {}],
-            ['11', '12', {}]
-        ]
-    }
-};
 
 
 storiesOf('Basic Settings', module)
@@ -99,6 +39,16 @@ storiesOf('Basic Settings', module)
         A more complex graph
         `)(() => {
         return <DagreD3 nodes={graphs.large.nodes} edges={graphs.large.edges}/>
+    }))
+    .add('dynamic graph 1', withInfo(`
+        A dynamic graph whose nodes update and it redraws
+        `)(() => {
+        return <DynamicGraph1/>
+    }))
+    .add('dynamic graph 2', withInfo(`
+        A dynamic graph whose node style updates and it redraws
+        `)(() => {
+        return <DynamicGraph2/>
     }));
 
 storiesOf('Node Settings', module)
@@ -162,6 +112,14 @@ storiesOf('Node Settings', module)
     }));
 
 storiesOf('Edge Settings', module)
+    .add('edge labels', withInfo(`
+    Attaching labels to edges
+    `)(() => {
+        let labels = JSON.parse(JSON.stringify(graphs.simple));
+        labels.edges[1][2].label = 'edge 1';
+        labels.edges[2][2].label = 'edge 2';
+        return <DagreD3 nodes={labels.nodes} edges={labels.edges}/>
+    }))
     .add('edge classes', withInfo(`
         Attaching classes to specific edges
         `)(() => {

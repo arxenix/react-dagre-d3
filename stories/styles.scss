@@ -15,9 +15,7 @@ $shapes: "rect, polygon, circle, ellipse, diamond";
     }
 
     text {
-      font-weight: 300;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serf, sans-serif;
-      font-size: 14px;
+      font: 300 14px 'Helvetica Neue', Helvetica;
     }
   }
   //styles for graph edges
@@ -27,6 +25,10 @@ $shapes: "rect, polygon, circle, ellipse, diamond";
       fill: black;
       stroke-width: 1.5px;
     }
+  }
+
+  .edgeLabel text {
+    font: 300 14px 'Helvetica Neue', Helvetica;
   }
 }
 
