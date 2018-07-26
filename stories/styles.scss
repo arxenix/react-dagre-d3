@@ -1,0 +1,70 @@
+$shapes: "rect, polygon, circle, ellipse, diamond";
+// BASIC STYLING
+.dagre-d3 {
+  //styles for graph nodes
+  .node {
+    fill: white;
+
+    #{$shapes} {
+      stroke: black;
+      stroke-width: 1px;
+    }
+
+    .label {
+      fill: black;
+    }
+
+    text {
+      font-weight: 300;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serf, sans-serif;
+      font-size: 14px;
+    }
+  }
+  //styles for graph edges
+  .edgePath {
+    path.path {
+      stroke: black;
+      fill: black;
+      stroke-width: 1.5px;
+    }
+  }
+}
+
+
+// custom styles for demo
+.dagre-d3 {
+  border: 1px dashed grey;
+
+  .node {
+    &.clickable {
+      #{$shapes} {
+        cursor: pointer;
+      }
+      text {
+        cursor: pointer;
+        user-select: none;
+      }
+      &:hover {
+        #{$shapes} {
+          stroke-width: 3.5px;
+        }
+      }
+    }
+    &.red {
+      #{$shapes} {
+        fill: red;
+      }
+    }
+    &.green {
+      #{$shapes} {
+        fill: green;
+      }
+    }
+  }
+
+  .edgePath {
+    &.dashed {
+      stroke-dasharray: 5, 5;
+    }
+  }
+}

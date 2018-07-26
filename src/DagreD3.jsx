@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import * as dagreD3 from "dagre-d3"
-import * as d3 from "d3"
+import * as dagreD3 from 'dagre-d3'
+import * as d3 from 'd3'
 
 import isEqual from 'react-fast-compare'
 
@@ -9,6 +9,24 @@ class DagreD3 extends React.Component {
     constructor(props) {
         super(props);
     }
+
+    static defaultProps = {
+        height: "1",
+        width: "1",
+        fit: true,
+        interactive: false
+    };
+
+    static propTypes = {
+        nodes: PropTypes.object.isRequired,
+        edges: PropTypes.array.isRequired,
+        interactive: PropTypes.bool,
+        fit: PropTypes.bool,
+        height: PropTypes.string,
+        width: PropTypes.string,
+        shapeRenderers: PropTypes.objectOf(PropTypes.func),
+        onNodeClick: PropTypes.func,
+    };
 
     shouldComponentUpdate(nextProps, nextState) {
         return !isEqual(this.props.nodes, nextProps.nodes) ||
@@ -39,7 +57,7 @@ class DagreD3 extends React.Component {
         let inner = d3.select(this.nodeTreeGroup);
 
         // set up zoom support
-        if (this.props.zoom) {
+        if (this.props.interactive) {
             let zoom = d3.zoom().on("zoom",
                 () => inner.attr("transform", d3.event.transform));
             svg.call(zoom);
@@ -58,8 +76,10 @@ class DagreD3 extends React.Component {
 
 
         // TODO add padding?
-        svg.attr("height", g.graph().height);
-        svg.attr("width", g.graph().width);
+        if (this.props.fit) {
+            svg.attr("height", g.graph().height);
+            svg.attr("width", g.graph().width);
+        }
 
         if (this.props.onNodeClick)
             svg.selectAll('.dagre-d3 .node').on('click',
@@ -70,21 +90,13 @@ class DagreD3 extends React.Component {
         // width and height are set to 1 due to a FireFox bug(?) If set to 0, it complains.
         return (
             <svg className='dagre-d3' ref={(r) => {this.nodeTree = r}}
-                 width="1"
-                 height="1">
+                 width={this.props.height}
+                 height={this.props.width}>
 
                 <g ref={(r) => {this.nodeTreeGroup = r}}/>
             </svg>
         );
     }
 }
-
-DagreD3.propTypes = {
-    nodes: PropTypes.object.isRequired,
-    edges: PropTypes.array.isRequired,
-    zoom: PropTypes.bool,
-    shapeRenderers: PropTypes.objectOf(PropTypes.func),
-    onNodeClick: PropTypes.func,
-};
 
 export default DagreD3;
