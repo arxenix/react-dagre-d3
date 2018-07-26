@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import DagreD3 from '../src/DagreD3.jsx';
 import * as dagreD3 from 'dagre-d3';
+import * as d3 from 'd3';
 import './styles.scss'
 
 
@@ -28,12 +29,31 @@ let graphs = {
             ['2', '4', {}],
             ['3', '4', {}]
         ]
+    },
+    complex: {
+        nodes: {
+            '1': {},
+            '2': {},
+            '3': {},
+            '4': {},
+            '5': {},
+            '6': {},
+        },
+        edges: [
+            ['1','2',{}],
+            ['1','3',{}],
+            ['2','4',{}],
+            ['3','4',{}],
+            ['4','5',{}],
+            ['1','6',{}],
+            ['5','6',{}]
+        ]
     }
 };
 
 
-storiesOf('Dagre-D3', module)
-    .add('basic', () => {
+storiesOf('Basic Settings', module)
+    .add('basic graph', () => {
         return <DagreD3 nodes={graphs.simple.nodes} edges={graphs.simple.edges}/>
     })
     .add('svg size', () => {
@@ -42,6 +62,11 @@ storiesOf('Dagre-D3', module)
     .add('interactive', () => {
         return <DagreD3 nodes={graphs.simple.nodes} edges={graphs.simple.edges} interactive height={'400'} width={'400'} fit={false}/>
     })
+    .add('complex graph', () => {
+        return <DagreD3 nodes={graphs.complex.nodes} edges={graphs.complex.edges} interactive height={'400'} width={'400'} fit={false}/>
+    });
+
+storiesOf('Node Settings', module)
     .add('click events', () => {
         return <DagreD3 nodes={graphs.simple.nodes} edges={graphs.simple.edges} onNodeClick={action('clicked node')}/>
     })
@@ -87,4 +112,20 @@ storiesOf('Dagre-D3', module)
         let combined = JSON.parse(JSON.stringify(graphs.simple));
         combined.nodes['2'].shape = 'house';
         return <DagreD3 nodes={combined.nodes} edges={combined.edges} shapeRenderers={{house: house}}/>
+    });
+
+storiesOf('Edge Settings', module)
+    .add('edge classes', () => {
+        let curve = JSON.parse(JSON.stringify(graphs.simple));
+        for (let edge of curve.edges) {
+            edge[2].class = 'dashed';
+        }
+        return <DagreD3 nodes={curve.nodes} edges={curve.edges}/>
+    })
+    .add('custom edge renderer', () => {
+        let curve = JSON.parse(JSON.stringify(graphs.simple));
+        for (let edge of curve.edges) {
+            edge[2].curve = d3.curveBasis;
+        }
+        return <DagreD3 nodes={curve.nodes} edges={curve.edges}/>
     });
