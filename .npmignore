@@ -7,3 +7,4 @@ stories/
 .gitignore
 *.iml
 webpack.config.js
+README.md
