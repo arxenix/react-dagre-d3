@@ -13,6 +13,7 @@ class DagreD3 extends React.Component {
     static defaultProps = {
         height: "1",
         width: "1",
+        // width and height are defaulted to 1 due to a FireFox bug(?) If set to 0, it complains.
         fit: true,
         interactive: false
     };
@@ -77,8 +78,13 @@ class DagreD3 extends React.Component {
 
         // TODO add padding?
         if (this.props.fit) {
-            svg.attr("height", g.graph().height);
-            svg.attr("width", g.graph().width);
+            let {height: gHeight, width: gWidth} = g.graph();
+            let {height, width} = this.nodeTree.getBBox();
+            let transX = width - gWidth;
+            let transY = height - gHeight;
+            svg.attr("height", height);
+            svg.attr("width", width);
+            inner.attr("transform", d3.zoomIdentity.translate(transX, transY))
         }
 
         if (this.props.onNodeClick)
@@ -87,7 +93,6 @@ class DagreD3 extends React.Component {
     }
 
     render() {
-        // width and height are set to 1 due to a FireFox bug(?) If set to 0, it complains.
         return (
             <svg className='dagre-d3' ref={(r) => {this.nodeTree = r}}
                  width={this.props.height}
