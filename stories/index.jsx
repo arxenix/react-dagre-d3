@@ -166,9 +166,8 @@ storiesOf('Edge Settings', module)
         Attaching classes to specific edges
         `)(() => {
         let curve = JSON.parse(JSON.stringify(graphs.simple));
-        for (let edge of curve.edges) {
-            edge[2].class = 'dashed';
-        }
+        curve.edges[1][2].class = 'dashed';
+        curve.edges[2][2].class = 'dashed';
         return <DagreD3 nodes={curve.nodes} edges={curve.edges}/>
     }))
     .add('custom edge renderer', withInfo(`
