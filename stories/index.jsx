@@ -30,13 +30,9 @@ let graphs = {
             ['3', '4', {}]
         ]
     },
-    complex: {
+    medium: {
         nodes: {
-            '1': {},
-            '2': {},
-            '3': {},
-            '4': {},
-            '5': {},
+            '1': {}, '2': {}, '3': {}, '4': {}, '5': {},
             '6': {},
         },
         edges: [
@@ -47,6 +43,28 @@ let graphs = {
             ['4','5',{}],
             ['1','6',{}],
             ['5','6',{}]
+        ]
+    },
+    large: {
+        nodes: {
+            '1': {}, '2': {}, '3': {}, '4': {}, '5': {}, '6': {},
+            '7': {}, '8': {}, '9': {}, '10': {}, '11': {}, '12': {}
+        },
+        edges: [
+            ['1','2',{}],
+            ['1','5',{}],
+            ['2','3',{}],
+            ['3','4',{}],
+            ['5','6',{}],
+            ['5','7',{}],
+            ['5','8',{}],
+            ['6','9',{}],
+            ['7','10',{}],
+            ['2','9',{}],
+            ['2','10',{}],
+            ['9','11',{}],
+            ['10','11',{}],
+            ['11','12',{}]
         ]
     }
 };
@@ -62,8 +80,11 @@ storiesOf('Basic Settings', module)
     .add('interactive', () => {
         return <DagreD3 nodes={graphs.simple.nodes} edges={graphs.simple.edges} interactive height={'400'} width={'400'} fit={false}/>
     })
+    .add('another graph', () => {
+        return <DagreD3 nodes={graphs.medium.nodes} edges={graphs.medium.edges}/>
+    })
     .add('complex graph', () => {
-        return <DagreD3 nodes={graphs.complex.nodes} edges={graphs.complex.edges} interactive height={'400'} width={'400'} fit={false}/>
+        return <DagreD3 nodes={graphs.large.nodes} edges={graphs.large.edges}/>
     });
 
 storiesOf('Node Settings', module)
