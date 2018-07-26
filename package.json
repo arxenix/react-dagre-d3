@@ -1,5 +1,5 @@
 {
-  "name": "react-dagred3",
+  "name": "react-dagre-d3",
   "version": "0.0.1",
   "description": "React wrapper around dagre-d3. dynamically generate and layout DAGs",
   "keywords": [
@@ -10,16 +10,16 @@
     "graph",
     "layout"
   ],
-  "homepage": "https://github.com/arxenix/React-DagreD3",
+  "homepage": "https://github.com/arxenix/react-dagre-d3",
   "bugs": {
-    "url": "https://github.com/arxenix/React-DagreD3"
+    "url": "https://github.com/arxenix/react-dagre-d3"
   },
   "license": "MIT",
   "author": "Ankur Sundara <me@ankursundara.com> (https://github.com/arxenix)",
   "main": "build/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/arxenix/React-DagreD3.git"
+    "url": "https://github.com/arxenix/react-dagre-d3.git"
   },
   "scripts": {
     "build": "webpack -p",
