@@ -1,0 +1,9 @@
+src/
+docs/
+stories/
+.storybook/
+.idea/
+.babelrc
+.gitignore
+*.iml
+webpack.config.js

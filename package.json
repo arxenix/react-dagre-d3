@@ -24,11 +24,9 @@
   "scripts": {
     "build": "webpack -p",
     "build:dev": "webpack -d",
-    "build:doc": "documentation build src/* --shallow --config documentation.yml --github --format md --output DOCS.md",
     "build:storybook": "build-storybook -c .storybook -o docs",
-    "lint": "eslint src --fix",
-    "prerelease": "npm run lint && npm run test && npm run build",
-    "release": "npm publish . --access public",
+    "prepublishOnly": "npm run build",
+    "publish": "npm publish . --access public",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "peerDependencies": {
