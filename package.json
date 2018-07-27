@@ -34,7 +34,6 @@
     "react-dom": "^16.4.1"
   },
   "dependencies": {
-    "d3": "^5.5.0",
     "dagre-d3": "^0.6.1",
     "prop-types": "^15.6.2",
     "react-fast-compare": "^2.0.1"
@@ -47,15 +46,18 @@
     "@storybook/react": "^4.0.0-alpha.14",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-plugin-lodash": "^3.3.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "lodash-webpack-plugin": "^0.11.5",
     "moment": "^2.22.2",
     "node-sass": "^4.9.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "sass-loader": "^7.0.3",
     "webpack": "^4.16.2",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.1.0"
   }
 }
