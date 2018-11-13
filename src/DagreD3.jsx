@@ -50,7 +50,7 @@ class DagreD3 extends React.Component {
 
         const g = new dagreD3.graphlib.Graph()
             .setGraph({ ...graph }) // Set an object for the graph label
-            .setDefaultEdgeLabel({}); // Default to assigining a new object as a label for each new edge
+            .setDefaultEdgeLabel(() => ({})); // Default to assigining a new object as a label for each new edge
 
         Object.keys(nodes).forEach((id) => {
             g.setNode(id, nodes[id]);
